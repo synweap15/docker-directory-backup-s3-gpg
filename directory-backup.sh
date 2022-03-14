@@ -9,6 +9,7 @@ source /etc/profile.d/s3.sh
 AWS_CLI_OPTS=(--color off)
 [[ -n "${AWS_ENDPOINT}" ]] && AWS_CLI_OPTS+=(--endpoint-url "$AWS_ENDPOINT")
 
+BACKUP_FILENAME=backup
 S3_FILENAME="${BACKUP_BUCKET}/$(date "+${BACKUP_PREFIX}${BACKUP_FILENAME}${BACKUP_SUFFIX}")"
 
 function s3() {

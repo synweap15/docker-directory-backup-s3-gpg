@@ -25,6 +25,7 @@ RUN apt-get update \
 COPY README.md /
 COPY *.sh /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
+RUN ["chmod", "+x", "/usr/local/bin/directory-backup.sh"]
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
