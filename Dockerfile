@@ -10,7 +10,10 @@ ENV AWS_ACCESS_KEY_ID="" \
     BACKUP_SUFFIX="-%Y%m%d-%H%M.sql.gpg" \
     BACKUP_DIRECTORY="/backup" \
     PGP_KEY="" \
-    PGP_KEYSERVER="hkps://keys.gnupg.net,hkps://pgp.mit.edu,hkps://keyserver.ubuntu.com,hkps://peegeepee.com,hkp://keys.gnupg.net,hkp://pgp.mit.edu,hkp://keyserver.ubuntu.com,hkp://pool.sks-keyservers.net"
+    PGP_KEYSERVER="hkps://keys.gnupg.net,hkps://pgp.mit.edu,hkps://keyserver.ubuntu.com,hkps://peegeepee.com,hkp://keys.gnupg.net,hkp://pgp.mit.edu,hkp://keyserver.ubuntu.com,hkp://pool.sks-keyservers.net" \
+    SENDGRID_API_KEY="" \
+    MAIL_FROM="" \
+    MAIL_TO=""
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -26,6 +29,7 @@ COPY README.md /
 COPY *.sh /usr/local/bin/
 RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
 RUN ["chmod", "+x", "/usr/local/bin/directory-backup.sh"]
+RUN ["chmod", "+x", "/usr/local/bin/send-mail.sh"]
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 
